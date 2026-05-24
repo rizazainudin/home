@@ -1,724 +1,812 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Riza Zainudin | Portfolio</title>
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --bg-secondary: #101722;
-      --panel: rgba(16, 23, 34, 0.88);
-      --panel-strong: rgba(18, 27, 39, 0.96);
-      --line: rgba(255, 255, 255, 0.08);
-      --line-strong: rgba(255, 255, 255, 0.14);
-      --text: #edf2f7;
-      --muted: #9aa7b7;
-      --accent: #8ab4ff;
-      --accent-soft: rgba(138, 180, 255, 0.12);
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      --radius: 20px;
-      --max-width: 1180px;
-      --transition: 240ms ease;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
-        radial-gradient(circle at top left, rgba(138, 180, 255, 0.08), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(138, 180, 255, 0.05), transparent 24%),
-        var(--bg);
-      background-size: 36px 36px, 36px 36px, auto, auto, auto;
-      color: var(--text);
-      line-height: 1.65;
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(100% - 2rem, var(--max-width));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 88px 0;
-      position: relative;
-    }
-
-    .section + .section {
-      border-top: 1px solid var(--line);
-    }
-
-    .section-label {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 6px 12px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(8px);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
-      max-width: 30ch;
-    }
-
-    .section-intro {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 1.02rem;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      width: 280px;
-      height: 280px;
-      background: rgba(138, 180, 255, 0.16);
-      top: 10%;
-      right: 8%;
-      animation: floatGlow 7s ease-in-out infinite;
-    }
-
-    .hero::after {
-      width: 220px;
-      height: 220px;
-      background: rgba(255, 255, 255, 0.05);
-      bottom: 12%;
-      left: 6%;
-      animation: floatGlow 9s ease-in-out infinite reverse;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.85fr;
-      gap: 40px;
-      align-items: end;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.86rem;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.95;
-      max-width: 9ch;
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      max-width: 680px;
-      font-size: 1.08rem;
-      color: var(--muted);
-    }
-
-    .hero-meta {
-      display: grid;
-      gap: 14px;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      animation: riseIn 900ms ease both;
-    }
-
-    .meta-item {
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .meta-item:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .meta-label {
-      display: block;
-      color: var(--muted);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 5px;
-    }
-
-    .meta-value {
-      font-size: 1rem;
-      color: var(--text);
-    }
-
-    .about-layout,
-    .presence-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 36px;
-      align-items: start;
-    }
-
-    .about-copy,
-    .info-panel,
-    .presence-card,
-    .cert-card,
-    .project-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    .about-copy {
-      padding: 32px;
-    }
-
-    .about-copy p + p {
-      margin-top: 16px;
-    }
-
-    .info-panel {
-      padding: 28px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .info-panel h3,
-    .presence-card h3,
-    .cert-card h3,
-    .work-group h3 {
-      font-size: 1rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .focus-list,
-    .cert-list,
-    .presence-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .focus-list li,
-    .cert-list li,
-    .presence-list li {
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      color: var(--muted);
-    }
-
-    .work-groups {
-      display: grid;
-      gap: 28px;
-      margin-top: 40px;
-    }
-
-    .work-group {
-      display: grid;
-      gap: 18px;
-    }
-
-    .work-group-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: end;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .work-group-header p {
-      color: var(--muted);
-      max-width: 760px;
-      font-size: 0.98rem;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .project-card {
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
-      transition: transform var(--transition), border-color var(--transition), background var(--transition);
-    }
-
-    .project-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(138,180,255,0.08), transparent 36%);
-      opacity: 0;
-      transition: opacity var(--transition);
-      pointer-events: none;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(138, 180, 255, 0.28);
-      background: var(--panel-strong);
-    }
-
-    .project-card:hover::before {
-      opacity: 1;
-    }
-
-    .project-title {
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
-    }
-
-    .project-description {
-      color: var(--muted);
-      font-size: 0.96rem;
-      margin-bottom: 18px;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      font-size: 0.95rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-
-    .project-link:hover {
-      border-color: rgba(138, 180, 255, 0.45);
-      transform: translateX(2px);
-    }
-
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .cert-card {
-      padding: 24px;
-    }
-
-    .cert-card p {
-      color: var(--muted);
-      margin-top: 8px;
-      font-size: 0.95rem;
-    }
-
-    .presence-card {
-      padding: 30px;
-    }
-
-    .presence-card a {
-      color: var(--accent);
-      word-break: break-word;
-    }
-
-    .footer-note {
-      padding: 30px 0 60px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      text-align: center;
-    }
-
-    @keyframes floatGlow {
-      0%, 100% { transform: translateY(0px) translateX(0px); }
-      50% { transform: translateY(-16px) translateX(8px); }
-    }
-
-    @keyframes riseIn {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 960px) {
-      .hero-grid,
-      .about-layout,
-      .presence-layout,
-      .project-grid,
-      .cert-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 120px 0 80px;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: min(100% - 1.2rem, var(--max-width));
-      }
-
-      .about-copy,
-      .info-panel,
-      .project-card,
-      .cert-card,
-      .presence-card,
-      .hero-meta {
-        padding: 22px;
-      }
-
-      .work-group-header {
-        flex-direction: column;
-        align-items: start;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Riza Zainudin – Power Platform Solution Architect specialising in automation and analytics across Southeast Asia.">
+  <title>Riza Zainudin | Power Platform Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Portfolio</div>
-        <h1>Riza Zainudin</h1>
-        <p>
-          Analytics & Automation Solution Architect focused on building enterprise systems that eliminate manual work, 
-          standardize data, and scale decision-making across organizations. From automation pipelines to analytics platforms, 
-          I design solutions that reduce operational effort by up to 90% and turn fragmented data into actionable insight. <br><br>
-        </p>
 
-        <!--<ul class="presence-list">
-          <li>
-            <strong>Contact me at</strong><br>
-            <a href="https://linkedin.com/in/riza-zainudin" target="_blank" rel="noopener noreferrer">
-              linkedin.com/in/riza-zainudin
-            </a>
-          </li>
+  <!-- ── Navigation ── -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">RZ<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#automations">Automations</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#freelance">Freelance</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-        </ul>-->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+      <li><a href="#automations" class="mobile-nav-link">Automations</a></li>
+      <li><a href="#analytics" class="mobile-nav-link">Analytics</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+      <li><a href="#freelance" class="mobile-nav-link">Freelance</a></li>
+      <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="hero-container">
+      <div class="hero-text fade-in">
+        <span class="hero-greeting">Hi, I'm</span>
+        <h1 class="hero-name">Riza Zainudin</h1>
+        <h2 class="hero-title">Power Platform Solution Architect</h2>
+        <p class="hero-tagline">Turning complex business processes into elegant automation and data-driven insights across organisation.</p>
+        <div class="hero-btns">
+          <a href="#automations" class="btn btn-primary">View Projects</a>
+          <a href="mailto:riza.zainudin96@gmail.com" class="btn btn-outline">
+            <i class="fas fa-envelope"></i> Email Me
+          </a>
+          <a href="https://github.com/rizazainudin" target="_blank" rel="noopener" class="btn btn-outline">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
       </div>
 
-      <aside class="hero-meta">
-        <div class="meta-item">
-          <span class="meta-label">Current Focus</span>
-          <span class="meta-value">Power Platform architecture, analytics enablement, and automation governance</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Experience</span>
-          <span class="meta-value">5 years delivering enterprise-scale automation and analytics solutions</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Approach</span>
-          <span class="meta-value">Business-aligned, data-informed, and human-centered digital transformation</span>
-        </div>
-      </aside>
-    </div>
-  </header>
-
-  <main>
-    <section class="section" id="about">
-      <div class="container">
-        <span class="section-label">About</span>
-        <div class="about-layout">
-          <div class="about-copy">
-            <h2 class="section-title">Designing systems around data, people, and process.</h2>
-            <p>
-              Hi, I’m Riza Zainudin, a Power Platform Solution Architect focused on 
-              solving operational problems through structured, scalable systems.
-            </p>
-            <p>
-              Over the past 5 years, I’ve delivered enterprise platforms using Power Apps, Power Automate, Power BI, 
-              and Microsoft Fabric, standardizing reporting, reducing manual effort by up to 90%, and enabling faster, 
-              more reliable decision-making
-            </p>
-            <p>
-              I work at the intersection of business and technology, translating requirements into scalable solutions, 
-              setting governance standards, and supporting teams from design through delivery.
-            </p>
-            <p>
-              My focus is on building systems that simplify workflows, improve data reliability, and scale across teams.
-            </p>
+      <div class="hero-visual fade-in delay-1">
+        <div class="profile-photo-wrapper">
+          <div class="profile-photo" id="profilePhoto">
+            <img src="assets/profile.png" alt="Riza Zainudin">
           </div>
+          <div class="hero-badge badge-1">
+            <i class="fas fa-bolt"></i>
+            <span>Power Platform</span>
+          </div>
+          <div class="hero-badge badge-2">
+            <i class="fas fa-chart-bar"></i>
+            <span>Power BI</span>
+          </div>
+          <div class="hero-badge badge-3">
+            <i class="fas fa-robot"></i>
+            <span>AI Builder</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          <div class="info-panel">
-            <h3>Focus Areas</h3>
-            <ul class="focus-list">
+    <div class="hero-stats-wrapper">
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">90%</span>
+          <span class="stat-label">Avg. Manual Effort Saved</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Dashboards Delivered</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">150+</span>
+          <span class="stat-label">Hours Saved / Month</span>
+        </div>
+      </div>
+    </div>
 
-              <li><strong>Automation & Workflow Transformation</strong><br>
-                Designing automation pipelines for reporting, finance, and operational workflows—replacing manual processes with 
-                structured, traceable systems.</li>
+    <div class="hero-scroll">
+      <a href="#about" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
+    </div>
+  </section>
 
-              <li><strong>Analytics & Decision Enablement</strong><br>
-                Developing data models, dashboards, and reporting layers that support business monitoring, 
-                forecasting, and performance tracking.</li>
+  <!-- ── About ── -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Profile Summary</h2>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>Power Platform Leader with <strong>5+ years of experience</strong> delivering analytics and automation solutions while leading and mentoring developers across regions. Strong hands-on background in Power Apps, Power Automate, Power BI, Fabric, and Dataverse — building enterprise-grade solutions alongside the team.</p>
+          <p>Known for translating business needs into scalable solutions, setting development standards and governance, and stepping in hands-on when delivery or resource constraints require it.</p>
+          <div class="about-links">
+            <a href="mailto:riza.zainudin96@gmail.com" class="about-link">
+              <i class="fas fa-envelope"></i> riza.zainudin96@gmail.com
+            </a>
+            <a href="https://github.com/rizazainudin" target="_blank" rel="noopener" class="about-link">
+              <i class="fab fa-github"></i> github.com/rizazainudin
+            </a>
+          </div>
+        </div>
+        <div class="about-highlights fade-up delay-1">
+          <div class="highlight-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Location</strong>
+              <span>Petaling Jaya, Selangor, Malaysia</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <i class="fas fa-briefcase"></i>
+            <div>
+              <strong>Current Role</strong>
+              <span>IT BRM | Data &amp; Automation Lead — Kellogg Asia Marketing (Mars Snacking)</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <strong>Education</strong>
+              <span>Master's in Civil Engineering &amp; Hydraulics — INP Grenoble, France</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <i class="fas fa-certificate"></i>
+            <div>
+              <strong>Certifications</strong>
+              <span>PL-300, PL-900, AZ-900, AB-900 (Microsoft Certified)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-              <li><strong>Governance & Solution Standards</strong><br>
-                Defining ALM, CoE frameworks, and documentation standards (BRD, PDD, TDD) 
-                to ensure consistency and scalability across teams.</li>
+  <!-- ── Skills ── -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Technical Stack</div>
+      <h2 class="section-title">Areas of Expertise</h2>
+      <div class="skills-groups">
+        <div class="skill-group fade-up">
+          <h3 class="skill-group-title"><i class="fas fa-cog"></i> Automation &amp; Low-Code</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Power Apps</span>
+            <span class="skill-tag">Power Automate</span>
+            <span class="skill-tag">AI Builder</span>
+            <span class="skill-tag">Copilot Studio</span>
+            <span class="skill-tag">Excel VBA / Macro</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up delay-1">
+          <h3 class="skill-group-title"><i class="fas fa-chart-line"></i> Analytics &amp; BI</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Microsoft Fabric</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">DAX</span>
+            <span class="skill-tag">Power Query (M)</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up delay-2">
+          <h3 class="skill-group-title"><i class="fas fa-database"></i> Data &amp; Programming</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Dataverse</span>
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">SAP Integration</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up delay-3">
+          <h3 class="skill-group-title"><i class="fas fa-cloud"></i> Cloud &amp; Governance</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Microsoft Azure</span>
+            <span class="skill-tag">ALM / DevOps</span>
+            <span class="skill-tag">BRD / PDD / TDD</span>
+            <span class="skill-tag">CoE Framework</span>
+            <span class="skill-tag">Row-Level Security</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-              <li><strong>AI-Driven Business Solutions</strong><br>
-                Applying AI Builder and Copilot to enhance document processing, automation flows, 
-                and user interaction models.</li>
+  <!-- ════════════════════════════════
+       SECTION 01 — AUTOMATIONS
+       ════════════════════════════════ -->
+  <section id="automations" class="section">
+    <div class="container">
+      <div class="section-number">01</div>
+      <div class="section-label">Section One</div>
+      <h2 class="section-title">Automations</h2>
+      <p class="section-desc">Enterprise-grade automation solutions built with Power Platform — streamlining workflows, eliminating manual effort, and driving operational efficiency across industries.</p>
+
+      <div class="filter-bar" id="autoFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="power-automate">Power Automate</button>
+        <button class="filter-btn" data-filter="power-apps">Power Apps</button>
+        <button class="filter-btn" data-filter="copilot">Copilot Agent</button>
+      </div>
+
+      <div class="projects-grid" id="automationGrid">
+
+        <!-- Issue Reporting Form -->
+        <div class="project-card fade-up" data-category="power-automate">
+          <div class="card-top">
+            <div class="card-icon auto-icon"><i class="fas fa-exclamation-circle"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-automate">Power Automate</span>
+              <span class="tag tag-neutral">MS Forms</span>
+              <span class="tag tag-neutral">SharePoint</span>
+            </div>
+          </div>
+          <h3 class="card-title">Issue Reporting Form</h3>
+          <p class="card-desc">Automated issue tracking built with Microsoft Forms, Power Automate, and SharePoint. Enables seamless logging, intelligent routing, and automated follow-up for team-reported issues — eliminating manual email chains and ensuring nothing falls through the cracks.</p>
+          <div class="card-footer">
+            <a href="https://github.com/rizazainudin/Issue-Log-Form/blob/main/README.md" target="_blank" rel="noopener" class="card-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Weekly Data Health Check -->
+        <div class="project-card fade-up delay-1" data-category="power-automate">
+          <div class="card-top">
+            <div class="card-icon auto-icon"><i class="fas fa-heartbeat"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-automate">Power Automate</span>
+              <span class="tag tag-neutral">Power BI</span>
+              <span class="tag tag-neutral">SharePoint</span>
+            </div>
+          </div>
+          <h3 class="card-title">Weekly Data Health Check</h3>
+          <p class="card-desc">Automated weekly reporting on data quality using Power BI subscription snapshots. The flow triggers on subscription emails, extracts non-mapped data via Power BI queries, saves snapshots to SharePoint, and delivers a formatted summary report to the business team.</p>
+          <div class="card-footer">
+            <a href="https://github.com/rizazainudin/Data-Health-Check/blob/main/README.md" target="_blank" rel="noopener" class="card-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Invoice Automation -->
+        <div class="project-card fade-up delay-2" data-category="power-automate">
+          <div class="card-top">
+            <div class="card-icon auto-icon"><i class="fas fa-file-invoice"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-automate">Power Automate</span>
+              <span class="tag tag-ai">AI Builder</span>
+            </div>
+          </div>
+          <h3 class="card-title">Invoice Processing Automation</h3>
+          <p class="card-desc">Digitized the entire invoice processing workflow for a manufacturing plant using AI Builder in Power Automate. The solution automatically extracts data from <strong>400+ monthly invoices</strong>, validates entries, and updates records — eliminating manual entry and saving <strong>150+ hours per month</strong>.</p>
+          <div class="card-footer">
+            <a href="mailto:riza.zainudin96@gmail.com" class="card-link">
+              <i class="fas fa-envelope"></i> Contact me
+            </a>
+          </div>
+        </div>
+
+        <!-- 360 Performance Review -->
+        <div class="project-card fade-up" data-category="power-apps">
+          <div class="card-top">
+            <div class="card-icon auto-icon"><i class="fas fa-users"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-apps">Power Apps</span>
+              <span class="tag tag-automate">Power Automate</span>
+            </div>
+          </div>
+          <h3 class="card-title">360° Performance Review Platform</h3>
+          <p class="card-desc">A role-based Power Apps solution enabling bidirectional performance evaluations between managers and employees. Features structured review flows, automated notifications, and aggregated insights — improving review transparency and boosting completion rates by <strong>40%</strong>.</p>
+          <div class="card-footer">
+            <a href="mailto:riza.zainudin96@gmail.com" class="card-link">
+              <i class="fas fa-envelope"></i> Contact me
+            </a>
+          </div>
+        </div>
+
+        <!-- BulkChat Copilot Agent -->
+        <div class="project-card fade-up delay-1" data-category="copilot">
+          <div class="card-top">
+            <div class="card-icon auto-icon"><i class="fas fa-robot"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-copilot">Copilot Studio</span>
+              <span class="tag tag-ai">AI Builder</span>
+            </div>
+          </div>
+          <h3 class="card-title">Bulk Product Ordering — BulkChat</h3>
+          <p class="card-desc">An autonomous Copilot Agent that handles bulk product ordering through natural language conversations. Users can browse, configure, and place bulk orders via chat — removing the friction of navigating complex ordering forms and enabling faster procurement decisions.</p>
+          <div class="card-footer">
+            <a href="mailto:riza.zainudin96@gmail.com" class="card-link">
+              <i class="fas fa-envelope"></i> Contact me
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECTION 02 — ANALYTICS
+       ════════════════════════════════ -->
+  <section id="analytics" class="section section-alt">
+    <div class="container">
+      <div class="section-number">02</div>
+      <div class="section-label">Section Two</div>
+      <h2 class="section-title">Analytics</h2>
+      <p class="section-desc">Data analytics projects spanning Power BI, Python, SQL, and Tableau — delivering actionable insights, self-service reporting, and intelligent data models across diverse business domains.</p>
+
+      <div class="filter-bar" id="analyticsFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="power-bi">Power BI</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="sql">SQL</button>
+        <button class="filter-btn" data-filter="tableau">Tableau</button>
+      </div>
+
+      <div class="projects-grid" id="analyticsGrid">
+
+        <!-- Power BI: Employee Insights -->
+        <div class="project-card fade-up" data-category="power-bi">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-chart-pie"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-bi">Power BI</span>
+              <span class="tag tag-neutral">DAX</span>
+              <span class="tag tag-neutral">HR Analytics</span>
+            </div>
+          </div>
+          <h3 class="card-title">Employee Insights &amp; Analytics</h3>
+          <p class="card-desc">Comprehensive workforce analytics dashboard delivering headcount, attrition, and KPI insights. Enables HR and leadership teams to make data-driven talent decisions with real-time visibility across key workforce metrics.</p>
+          <div class="card-footer">
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiYmMwZDQ5NjgtNjVlNi00ZmRhLThhZmYtMmM2ZGY0YWMwNjVmIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener" class="card-link card-link-primary">
+              <i class="fas fa-external-link-alt"></i> View Live Report
+            </a>
+          </div>
+        </div>
+
+        <!-- Power BI: CRM Sales Pipeline -->
+        <div class="project-card fade-up delay-1" data-category="power-bi">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-bi">Power BI</span>
+              <span class="tag tag-neutral">CRM</span>
+              <span class="tag tag-neutral">Sales Analytics</span>
+            </div>
+          </div>
+          <h3 class="card-title">CRM Sales Pipeline Insights</h3>
+          <p class="card-desc">Sales performance and opportunity tracking dashboard providing visibility into pipeline health, win rates, and deal progression. Helps sales teams prioritise efforts and forecast revenue with confidence.</p>
+          <div class="card-footer">
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiMjNjMWM2YTAtYTVhNi00NGIwLTg2NjUtZjQwMDA1MzM1ZjZhIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener" class="card-link card-link-primary">
+              <i class="fas fa-external-link-alt"></i> View Live Report
+            </a>
+          </div>
+        </div>
+
+        <!-- Power BI: Airline Passenger Satisfaction -->
+        <div class="project-card fade-up delay-2" data-category="power-bi">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-plane"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-bi">Power BI</span>
+              <span class="tag tag-neutral">Sentiment Analysis</span>
+              <span class="tag tag-neutral">Survey Data</span>
+            </div>
+          </div>
+          <h3 class="card-title">Airline Passenger Satisfaction</h3>
+          <p class="card-desc">Sentiment and satisfaction trend analysis across flight routes and service categories. Identifies key satisfaction drivers and pain points to help airlines improve passenger experience through data-led decisions.</p>
+          <div class="card-footer">
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiMjY1YjM5MTctZGM1Zi00YmU5LThlZTMtOTk5MGNjNWEzMTEzIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener" class="card-link card-link-primary">
+              <i class="fas fa-external-link-alt"></i> View Live Report
+            </a>
+          </div>
+        </div>
+
+        <!-- Power BI: Malaysian Public Transport -->
+        <div class="project-card fade-up" data-category="power-bi">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-train"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-bi">Power BI</span>
+              <span class="tag tag-neutral">Public Data</span>
+              <span class="tag tag-neutral">Urban Mobility</span>
+            </div>
+          </div>
+          <h3 class="card-title">Malaysian Public Transport Ridership</h3>
+          <p class="card-desc">Ridership patterns and modal share analysis across Malaysian public transport networks. Visualises usage trends, peak periods, and corridor performance to support urban mobility planning and policy insights.</p>
+          <div class="card-footer">
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiNjFmODVlYzktMjBmNy00ZDJiLWFmZDgtZmVlMzNlNzc3NTM4IiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener" class="card-link card-link-primary">
+              <i class="fas fa-external-link-alt"></i> View Live Report
+            </a>
+          </div>
+        </div>
+
+        <!-- Power BI: LEGO Theme Analysis -->
+        <div class="project-card fade-up delay-1" data-category="power-bi">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-cubes"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-bi">Power BI</span>
+              <span class="tag tag-neutral">Product Analytics</span>
+              <span class="tag tag-neutral">Retail</span>
+            </div>
+          </div>
+          <h3 class="card-title">LEGO Theme Analysis</h3>
+          <p class="card-desc">Sales and popularity trend analysis segmented by LEGO theme, set size, and release year. Uncovers which themes drive the most consumer demand and how product complexity correlates with pricing and sales volume.</p>
+          <div class="card-footer">
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiMzViYmI0OGQtYzk2OS00MjU5LWFjNDEtYmRkZWI5NzI1ZDZhIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener" class="card-link card-link-primary">
+              <i class="fas fa-external-link-alt"></i> View Live Report
+            </a>
+          </div>
+        </div>
+
+        <!-- Python: Fashion E-Commerce -->
+        <div class="project-card fade-up delay-2" data-category="python">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fab fa-python"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-python">Python</span>
+              <span class="tag tag-neutral">Pandas</span>
+              <span class="tag tag-neutral">E-Commerce</span>
+            </div>
+          </div>
+          <h3 class="card-title">Fashion E-Commerce Inventory</h3>
+          <p class="card-desc">Inventory optimisation analysis for a fashion e-commerce platform. Identifies overstock and understock patterns, seasonal trends, and product performance to improve inventory turnover and reduce holding costs.</p>
+          <div class="card-footer">
+            <a href="https://github.com/RizaZainudin/python-projects/blob/main/Fashion.ipynb" target="_blank" rel="noopener" class="card-link">
+              <i class="fab fa-github"></i> View Notebook
+            </a>
+          </div>
+        </div>
+
+        <!-- Python: Driver-Partner Engagement -->
+        <div class="project-card fade-up" data-category="python">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fab fa-python"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-python">Python</span>
+              <span class="tag tag-neutral">EDA</span>
+              <span class="tag tag-neutral">Ride-Hailing</span>
+            </div>
+          </div>
+          <h3 class="card-title">Driver-Partner Engagement Analysis</h3>
+          <p class="card-desc">Evaluates and enhances engagement metrics among driver-partners in a ride-hailing ecosystem. Analyses trip frequency, earnings, and satisfaction signals to identify at-risk drivers and inform retention strategies.</p>
+          <div class="card-footer">
+            <a href="https://github.com/rizazainudin/python-driver-partner" target="_blank" rel="noopener" class="card-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Python: COVID-19 -->
+        <div class="project-card fade-up delay-1" data-category="python">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fab fa-python"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-python">Python</span>
+              <span class="tag tag-neutral">Public Health</span>
+              <span class="tag tag-neutral">Time Series</span>
+            </div>
+          </div>
+          <h3 class="card-title">COVID-19 Data Analysis</h3>
+          <p class="card-desc">Global and regional COVID-19 dataset analysis uncovering trends in infection rates, vaccination progress, and mortality statistics. Uses time-series visualisation and comparative analysis to surface meaningful public health insights.</p>
+          <div class="card-footer">
+            <a href="https://github.com/rizazainudin/python-covid19/blob/main/Covid-19%20Data%20Analysis.ipynb" target="_blank" rel="noopener" class="card-link">
+              <i class="fab fa-github"></i> View Notebook
+            </a>
+          </div>
+        </div>
+
+        <!-- SQL: Harry Potter -->
+        <div class="project-card fade-up delay-2" data-category="sql">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-database"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-sql">SQL</span>
+              <span class="tag tag-neutral">Text Analysis</span>
+              <span class="tag tag-neutral">Exploration</span>
+            </div>
+          </div>
+          <h3 class="card-title">Harry Potter Movie Scripts</h3>
+          <p class="card-desc">SQL-based exploration of Harry Potter movie script data — extracting character dialogue patterns, scene frequency, and word usage trends. A creative data exploration project demonstrating advanced querying, aggregation, and text-based analysis techniques.</p>
+          <div class="card-footer">
+            <a href="https://github.com/rizainudin/sql-projects/blob/main/HarryPotter_SQL.ipynb" target="_blank" rel="noopener" class="card-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Tableau: Disney Movies -->
+        <div class="project-card fade-up" data-category="tableau">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-film"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-tableau">Tableau</span>
+              <span class="tag tag-neutral">Box Office</span>
+              <span class="tag tag-neutral">Entertainment</span>
+            </div>
+          </div>
+          <h3 class="card-title">Disney Movies Dashboard</h3>
+          <p class="card-desc">Box office trends, genre performance, and inflation-adjusted gross insights across decades of Disney film releases. Highlights top-performing franchises and the evolution of studio output over time.</p>
+          <div class="card-footer">
+            <a href="https://public.tableau.com/app/profile/riza.zainudin/viz/Disney_16210753523740/Dashboard1" target="_blank" rel="noopener" class="card-link">
+              <i class="fas fa-external-link-alt"></i> View Dashboard
+            </a>
+          </div>
+        </div>
+
+        <!-- Tableau: Airbnb -->
+        <div class="project-card fade-up delay-1" data-category="tableau">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-home"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-tableau">Tableau</span>
+              <span class="tag tag-neutral">Real Estate</span>
+              <span class="tag tag-neutral">Geo Analysis</span>
+            </div>
+          </div>
+          <h3 class="card-title">Airbnb Listings Dashboard</h3>
+          <p class="card-desc">Geographic trends, occupancy patterns, and review score analytics for Airbnb listings. Maps price distributions by location, identifies high-demand corridors, and surfaces host performance insights across the dataset.</p>
+          <div class="card-footer">
+            <a href="https://public.tableau.com/app/profile/riza.zainudin/viz/AIrbnb_16186411719070/R1" target="_blank" rel="noopener" class="card-link">
+              <i class="fas fa-external-link-alt"></i> View Dashboard
+            </a>
+          </div>
+        </div>
+
+        <!-- Tableau: Superstore Sales -->
+        <div class="project-card fade-up delay-2" data-category="tableau">
+          <div class="card-top">
+            <div class="card-icon analytics-icon"><i class="fas fa-store"></i></div>
+            <div class="card-tags">
+              <span class="tag tag-tableau">Tableau</span>
+              <span class="tag tag-neutral">Retail</span>
+              <span class="tag tag-neutral">Sales Performance</span>
+            </div>
+          </div>
+          <h3 class="card-title">Superstore Sales Dashboard</h3>
+          <p class="card-desc">Profit trends, top-performing categories, and product performance insights for a retail superstore dataset. Identifies margin opportunities, loss-making segments, and regional performance variation across the product catalogue.</p>
+          <div class="card-footer">
+            <a href="https://public.tableau.com/app/profile/riza.zainudin/viz/Superstoresales_16158884322510/Dashboard1" target="_blank" rel="noopener" class="card-link">
+              <i class="fas fa-external-link-alt"></i> View Dashboard
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-label">Work History</div>
+      <h2 class="section-title">Experience</h2>
+
+      <div class="timeline">
+
+        <!-- Kellogg -->
+        <div class="timeline-item fade-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-company">Kellogg Asia Marketing Inc <span>(Mars Snacking)</span></h3>
+                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Petaling Jaya</span>
+              </div>
+              <span class="timeline-period">Jan 2024 – Present</span>
+            </div>
+            <div class="timeline-roles">
+              <div class="timeline-role">
+                <strong>IT BRM | Data &amp; Automation Lead</strong>
+                <span class="role-period">Nov 2024 – Present</span>
+              </div>
+              <div class="timeline-role">
+                <strong>Analytics &amp; Automation Specialist</strong>
+                <span class="role-period">Jan 2024 – Nov 2024</span>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Architected a regional data submission platform using Power Apps and Snowflake, standardising sales &amp; inventory reporting workflows across SEA markets and eliminating <strong>90%</strong> of manual consolidation effort at enterprise scale.</li>
+              <li>Designed the end-to-end solution architecture for a regional Demand Forecasting platform aligned to IBP, integrating multi-market inputs with master data workflows and reducing manual reconciliation effort by <strong>65%</strong> across 6+ markets.</li>
+              <li>Architected an AI-powered invoice processing solution using AI Builder and Power Automate, automating extraction and validation of 400+ monthly invoices at a manufacturing plant and recovering <strong>150+ hours</strong> of manual effort per month.</li>
+              <li>Led the analytics delivery function across SEA, governing a portfolio of 10+ Power BI dashboards and driving a <strong>200% increase</strong> in active users through structured enablement programmes and self-service reporting frameworks.</li>
+              <li>Defined and enforced ALM governance, solution design standards, and PDD/TDD templates across the regional Power Platform estate — achieving a <strong>95% on-time delivery rate</strong> across all initiatives.</li>
+              <li>Directed the strategic migration from Tableau to Power BI, designing the target state data architecture, redevelopment standards, and team enablement plan — reducing licensing costs by <strong>20%</strong> and accelerating dashboard delivery by <strong>40%</strong>.</li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="selected-work">
-      <div class="container">
-        <span class="section-label">Selected Work</span>
-        <h2 class="section-title">A portfolio of automation and analytics initiatives.</h2>
-        <p class="section-intro">
-          Featured work across Power Platform implementation and analytics dashboard development.
-        </p>
-
-        <div class="work-groups">
-          <div class="work-group">
-            <div class="work-group-header">
+        <!-- Baker Hughes -->
+        <div class="timeline-item fade-up delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
               <div>
-                <h3>Power Platform Solutions</h3>
-                <p>Enterprise workflows, internal platforms, and AI-powered solutions designed to improve efficiency, visibility, and governance.</p>
+                <h3 class="timeline-company">Baker Hughes Services (Malaysia) Sdn Bhd</h3>
+                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Kuala Lumpur</span>
+              </div>
+              <span class="timeline-period">Feb 2022 – Jan 2024</span>
+            </div>
+            <div class="timeline-roles">
+              <div class="timeline-role">
+                <strong>Data &amp; Analytics Specialist</strong>
+                <span class="role-period">Jul 2023 – Jan 2024</span>
+              </div>
+              <div class="timeline-role">
+                <strong>Senior Data Analyst</strong>
+                <span class="role-period">Oct 2022 – Jun 2023</span>
+              </div>
+              <div class="timeline-role">
+                <strong>Data Analyst</strong>
+                <span class="role-period">Feb 2022 – Oct 2022</span>
               </div>
             </div>
-
-            <div class="project-grid">
-              <article class="project-card">
-                <h4 class="project-title">Issue Reporting Form</h4>
-                <p class="project-description">
-                  An automated issue reporting workflow built with Microsoft Forms, Power Automate, and SharePoint to streamline issue logging, routing, and follow-up.
-                </p>
-                <a class="project-link" href="https://github.com/rizazainudin/Issue-Log-Form/blob/main/README.md" 
-                target="_blank" rel="noopener noreferrer">View project ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Weekly Data Health Check</h4>
-                <p class="project-description">
-                  A recurring data quality reporting solution using Power BI subscription snapshots and Power Automate to capture, store, and distribute health check summaries.
-                </p>
-                <a class="project-link" href="https://github.com/rizazainudin/Data-Health-Check/blob/main/README.md" 
-                target="_blank" rel="noopener noreferrer">View project ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Inbound &amp; Outbound Invoice Automation</h4>
-                <p class="project-description">
-                  A digitized invoice processing solution using AI Builder and Power Automate that reduced manual work and saved more than 150 hours per month.
-                </p>
-                <a class="project-link" href="https://www.linkedin.com/in/riza-zainudin/" 
-                target="_blank" rel="noopener noreferrer">Contact me ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">360° Performance Review Platform</h4>
-                <p class="project-description">
-                  A role-based Power Apps platform that enabled managers and employees to exchange structured feedback, improving review transparency and completion rates.
-                </p>
-                <a class="project-link" href="https://www.linkedin.com/in/riza-zainudin/" 
-                target="_blank" rel="noopener noreferrer">Contact me ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Bulk Product Ordering Agent</h4>
-                <p class="project-description">
-                  A Copilot-based autonomous ordering workflow that supports conversational product ordering and 
-                  process simplification for bulk requests.
-                </p>
-                <a class="project-link" href="https://www.linkedin.com/in/riza-zainudin/" 
-                target="_blank" rel="noopener noreferrer">Contact me ↗</a>
-              </article>
-            </div>
+            <ul class="timeline-bullets">
+              <li>Founded and led the Power Platform Center of Excellence (CoE), establishing solution design governance, reusable component libraries, and peer-review processes — reducing duplicate workflows by <strong>40%</strong> and raising delivery standards organisation-wide.</li>
+              <li>Architected 7+ enterprise Power Apps solutions end-to-end — from requirements scoping and solution design through build and deployment — eliminating <strong>100% of manual errors</strong> and reducing processing time by <strong>90%</strong>.</li>
+              <li>Engineered a Python-based SAP data extraction framework, reducing reporting cycle time from <strong>6+ hours to 90 minutes</strong> and improving financial data reliability for multiple business functions.</li>
+              <li>Designed a Power Automate solution to digitalise the global Manual Journal Entry process, replacing fragmented email-based workflows and eliminating <strong>100%</strong> of cross-team back-and-forth communication organisation-wide.</li>
+              <li>Designed and maintained a portfolio of 10+ Power BI dashboards with advanced DAX models and Power Query transformations, delivering actionable KPIs and operational insights to senior stakeholders in the Reporting &amp; Statutory team.</li>
+            </ul>
           </div>
+        </div>
 
-          <div class="work-group">
-            <div class="work-group-header">
+        <!-- Mr DIY -->
+        <div class="timeline-item fade-up delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
               <div>
-                <h3>Analytics Dashboard</h3>
-                <p>Dashboards and analytical projects focused on decision support, performance visibility, and trend discovery across multiple domains.</p>
+                <h3 class="timeline-company">Mr DIY Group (M) Sdn Bhd</h3>
+                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Seri Kembangan</span>
+              </div>
+              <span class="timeline-period">Apr 2021 – Feb 2022</span>
+            </div>
+            <div class="timeline-roles">
+              <div class="timeline-role">
+                <strong>Junior Data Analyst</strong>
+                <span class="role-period">Apr 2021 – Feb 2022</span>
               </div>
             </div>
-
-            <div class="project-grid">
-              <article class="project-card">
-                <h4 class="project-title">Employee Insights and Analytics Dashboard</h4>
-                <p class="project-description">
-                  A workforce analytics dashboard designed to surface HR KPIs, headcount trends, and performance insights for better people-focused decision-making.
-                </p>
-                <a class="project-link" href="https://app.powerbi.com/view?r=eyJrIjoiYmMwZDQ5NjgtNjVlNi00ZmRhLThhZmYtMmM2ZGY0YWMwNjVmIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" 
-                target="_blank" rel="noopener noreferrer">View project ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">CRM Sales Pipeline Insights</h4>
-                <p class="project-description">
-                  A sales analytics dashboard built to track opportunities, pipeline health, and performance trends across the customer journey.
-                </p>
-                <a class="project-link" href="https://app.powerbi.com/view?r=eyJrIjoiMjNjMWM2YTAtYTVhNi00NGIwLTg2NjUtZjQwMDA1MzM1ZjZhIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" 
-                target="_blank" rel="noopener noreferrer">View dashboard ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Airline Passenger Satisfaction</h4>
-                <p class="project-description">
-                  A dashboard exploring passenger sentiment, satisfaction drivers, and service quality patterns across airline journeys.
-                </p>
-                <a class="project-link" href="https://app.powerbi.com/view?r=eyJrIjoiMjY1YjM5MTctZGM1Zi00YmU5LThlZTMtOTk5MGNjNWEzMTEzIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" 
-                target="_blank" rel="noopener noreferrer">View dashboard ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Malaysian Public Transport Ridership</h4>
-                <p class="project-description">
-                  A ridership dashboard analyzing public transport usage patterns, modal trends, and urban mobility behavior in Malaysia.
-                </p>
-                <a class="project-link" href="https://app.powerbi.com/view?r=eyJrIjoiNjFmODVlYzktMjBmNy00ZDJiLWFmZDgtZmVlMzNlNzc3NTM4IiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" 
-                target="_blank" rel="noopener noreferrer">View dashboard ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">LEGO Theme Analysis</h4>
-                <p class="project-description">
-                  A visual analysis project examining LEGO theme popularity, sales trends, and product performance across categories.
-                </p>
-                <a class="project-link" href="https://app.powerbi.com/view?r=eyJrIjoiMzViYmI0OGQtYzk2OS00MjU5LWFjNDEtYmRkZWI5NzI1ZDZhIiwidCI6IjU2OGU1ZDUxLTgyMGEtNGJkYS1hZDY2LWMwNGVjZWJjZDAyMyIsImMiOjEwfQ%3D%3D" 
-                target="_blank" rel="noopener noreferrer">View dashboard ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Disney Movies Dashboard</h4>
-                <p class="project-description">
-                  A Tableau dashboard that highlights box office trends, genre performance, and inflation-adjusted revenue across Disney films.
-                </p>
-                <a class="project-link" href="https://public.tableau.com/app/profile/riza.zainudin/viz/Disney_16210753523740/Dashboard1" 
-                target="_blank" rel="noopener noreferrer">View dashboard ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Airbnb Listings Dashboard</h4>
-                <p class="project-description">
-                  A Tableau dashboard that highlights Airbnb geographic trends, occupancy patterns, and review score analytics.
-                </p>
-                <a class="project-link" href="https://public.tableau.com/app/profile/riza.zainudin/viz/AIrbnb_16186411719070/R1" 
-                target="_blank" rel="noopener noreferrer">View dashboard ↗</a>
-              </article>
-
-              <article class="project-card">
-                <h4 class="project-title">Superstore Sales Analytics</h4>
-                <p class="project-description">
-                  A Tableau dashboard that highlights superstore profit trends, top categories, and product performance insights.
-                </p>
-                <a class="project-link" href="https://public.tableau.com/app/profile/riza.zainudin/viz/Superstoresales_16158884322510/Dashboard1" 
-                target="_blank" rel="noopener noreferrer">View dashboard ↗</a>
-              </article>
-
-            </div>
+            <ul class="timeline-bullets">
+              <li>Designed and optimised SQL-based data extraction pipelines across multiple enterprise databases, improving processing efficiency by <strong>80%</strong> with a zero error rate.</li>
+              <li>Built Excel VBA/Macro automation for operational reporting and data cleansing workflows, reducing manual effort by <strong>90%</strong> and freeing the team for higher-value analytical work.</li>
+              <li>Delivered inventory trend analysis for overseas warehouses and retail outlets, generating insights that improved inventory management efficiency by <strong>25%</strong>.</li>
+            </ul>
           </div>
         </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="certifications">
-      <div class="container">
-        <span class="section-label">Certifications</span>
-        <h2 class="section-title">Microsoft credentials aligned with analytics and automation.</h2>
+  <!-- ── Freelance ── -->
+  <section id="freelance" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Independent Work</div>
+      <h2 class="section-title">Freelance</h2>
 
-        <div class="cert-grid">
-          <article class="cert-card">
-            <h3>PL-300 — Microsoft Certified: Power BI Data Analyst Associate</h3>
-            <p>Focused on data modeling, visualization design, and business intelligence delivery using Power BI.<br><br></p>
-            <a class="project-link" href="https://learn.microsoft.com/api/credentials/share/en-us/Riza-Zainudin/837FCB162F91D75F" 
-                target="_blank" rel="noopener noreferrer">See credentials ↗</a>
-          </article>
+      <div class="timeline">
 
-          <article class="cert-card">
-            <h3>PL-900 — Microsoft Certified: Power Platform Fundamentals</h3>
-            <p>Foundational certification covering the Power Platform ecosystem and its business application capabilities.<br><br></p>
-            <a class="project-link" href="https://learn.microsoft.com/en-us/users/riza-zainudin/credentials/56f7f4e4f9eac0bc" 
-                target="_blank" rel="noopener noreferrer">See credentials ↗</a>
-          </article>
-
-          <article class="cert-card">
-            <h3>AZ-900 — Microsoft Certified: Azure Fundamentals</h3>
-            <p>Core understanding of Azure cloud concepts, services, governance, and architecture principles.<br><br></p>
-            <a class="project-link" href="https://learn.microsoft.com/en-us/users/riza-zainudin/credentials/22c77c3a618c10e3" 
-                target="_blank" rel="noopener noreferrer">See credentials ↗</a>
-          </article>
-
-          <article class="cert-card">
-            <h3>AB-900 — Microsoft Certified: Copilot and Agent Administration Fundamentals</h3>
-            <p>Knowledge of Copilot, agent administration, and AI-enabled business productivity scenarios.<br><br></p>
-            <a class="project-link" href="https://learn.microsoft.com/api/credentials/share/en-us/Riza-Zainudin/62D3C72C21CA7E94" 
-                target="_blank" rel="noopener noreferrer">See credentials ↗</a>
-          </article>
+        <div class="timeline-item fade-up">
+          <div class="timeline-dot timeline-dot-freelance"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-company">IQVIA Solutions Malaysia Sdn Bhd <span class="freelance-badge">Freelance</span></h3>
+                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Kuala Lumpur</span>
+              </div>
+              <span class="timeline-period">Aug – Nov 2024</span>
+            </div>
+            <div class="timeline-roles">
+              <div class="timeline-role">
+                <strong>Digitalization Lead</strong>
+                <span class="role-period">Aug 2024 – Nov 2024</span>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Architected an end-to-end project management and analytics platform using Power Apps and Power BI, covering project intake, consultant allocation, and performance tracking — improving operational efficiency by <strong>50%</strong>.</li>
+              <li>Designed a Microsoft Fabric data architecture to centralise HR and project data organisation-wide, leveraging Dataflows Gen2 and OneLake to deliver governed, reusable reporting datasets at scale.</li>
+              <li>Deployed a 360° performance management platform on Power Apps with role-based access controls, automated review workflows, and RLS-secured analytics — increasing completion rates by <strong>40%</strong> and enabling data-driven workforce insights.</li>
+            </ul>
+          </div>
         </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
+  <!-- ── Certifications ── -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+      <div class="certs-grid">
 
-  </main>
+        <div class="cert-card fade-up">
+          <div class="cert-icon"><i class="fas fa-robot"></i></div>
+          <div class="cert-info">
+            <span class="cert-code">AB-900</span>
+            <h3 class="cert-title">Microsoft Certified: Copilot &amp; Agent Administration Fundamentals</h3>
+            <span class="cert-date">Apr 2026</span>
+          </div>
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/Riza-Zainudin/62D3C72C21CA7E94" target="_blank" rel="noopener" class="cert-verify">Credentials <i class="fas fa-external-link-alt"></i></a>
+        </div>
 
-  <footer class="container footer-note">
-    © 2026 Riza Zainudin. Built with a focus on structure, clarity, and performance. Crafted with AI assistance.
+        <div class="cert-card fade-up delay-1">
+          <div class="cert-icon"><i class="fas fa-cloud"></i></div>
+          <div class="cert-info">
+            <span class="cert-code">AZ-900</span>
+            <h3 class="cert-title">Microsoft Certified: Azure Fundamentals</h3>
+            <span class="cert-date">Mar 2026</span>
+          </div>
+          <a href="https://learn.microsoft.com/en-us/users/riza-zainudin/credentials/22c77c3a618c10e3" target="_blank" rel="noopener" class="cert-verify">Credentials <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <div class="cert-card fade-up delay-2">
+          <div class="cert-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="cert-info">
+            <span class="cert-code">PL-300</span>
+            <h3 class="cert-title">Microsoft Certified: Power BI Data Analyst Associate</h3>
+            <span class="cert-date">Jan 2026</span>
+          </div>
+          <a href="https://learn.microsoft.com/en-us/users/riza-zainudin/credentials/56f7f4e4f9eac0bc" target="_blank" rel="noopener" class="cert-verify">Credentials <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <div class="cert-card fade-up delay-3">
+          <div class="cert-icon"><i class="fas fa-bolt"></i></div>
+          <div class="cert-info">
+            <span class="cert-code">PL-900</span>
+            <h3 class="cert-title">Microsoft Certified: Power Platform Fundamentals</h3>
+            <span class="cert-date">Dec 2025</span>
+          </div>
+          <a href="https://learn.microsoft.com/en-us/users/riza-zainudin/credentials/56f7f4e4f9eac0bc" target="_blank" rel="noopener" class="cert-verify">Credentials <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <div class="cert-card fade-up">
+          <div class="cert-icon"><i class="fas fa-award"></i></div>
+          <div class="cert-info">
+            <span class="cert-code">CADS</span>
+            <h3 class="cert-title">Data Analyst Certificate — The Center of Applied Data Science</h3>
+            <span class="cert-date">Mar 2021</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="contact-desc">Open to discussing Power Platform projects, data strategy, team leadership, or collaborative opportunities across the region.</p>
+      <div class="contact-links">
+        <a href="mailto:riza.zainudin96@gmail.com" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <span>riza.zainudin96@gmail.com</span>
+        </a>
+        <a href="https://github.com/rizazainudin" target="_blank" rel="noopener" class="contact-card">
+          <i class="fab fa-github"></i>
+          <span>github.com/rizazainudin</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <p>Riza Zainudin &nbsp;&middot;&nbsp; Power Platform Solution Architect &nbsp;&middot;&nbsp; Petaling Jaya, Malaysia</p>
+    </div>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
