@@ -2,7 +2,7 @@
 
 Personal portfolio website for **Riza Zainudin**, Power Platform Solution Architect. Built with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies beyond Google Fonts and Font Awesome.
 
-**Live site:** [rizazainudin.github.io](https://rizazainudin.github.io) 
+**Live site:** [rizazainudin.github.io](https://rizazainudin.github.io/home/)
 
 ---
 
@@ -53,7 +53,7 @@ No build step required. Open `index.html` directly in a browser:
 
 ```bash
 # Clone the repo
-git clone https://github.com/rizazainudin/rizazainudin.github.io.git
+git clone https://github.com/rizazainudin/home
 
 # Open in browser
 open index.html
@@ -69,10 +69,3 @@ Or use a local dev server (e.g. VS Code Live Server extension) for the smoothest
 2. Go to **Settings → Pages**
 3. Set source to `main` branch, `/ (root)` folder
 4. Save — the site will be live at `https://<your-username>.github.io`
-
----
-
-## Contact
-
-**Email:** riza.zainudin96@gmail.com  
-**GitHub:** [github.com/rizazainudin](https://github.com/rizazainudin)
