@@ -12,14 +12,6 @@ Personal portfolio website for **Riza Zainudin**. Built with vanilla HTML, CSS, 
 
 ---
 
-## Preview
-
-![Portfolio preview](assets/img/work/dashboard-1.png)
-
-> _Swap this in for a dedicated hero screenshot — drop it at `assets/preview.png` and update the path above._
-
----
-
 ## Overview
 
 A single-page portfolio that showcases:
