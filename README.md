@@ -19,8 +19,6 @@ A single-page portfolio that showcases:
 - **Analytics projects** — interactive Power BI reports plus Python, SQL, and Tableau Public work.
 - **Experience & certifications** — a work-history timeline, freelance engagements, and verified Microsoft / industry credentials.
 
-Headline stats from the field: **5+ years experience**, **~90% average manual effort saved**, **50+ dashboards delivered**, and **150+ hours saved per month**.
-
 ---
 
 ## Features
