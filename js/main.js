@@ -24,6 +24,26 @@ document.querySelectorAll('.mobile-nav-link').forEach(link => {
 });
 
 /* ──────────────────────────────────
+   Theme toggle (dark / light)
+   ────────────────────────────────── */
+
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon   = themeToggle.querySelector('i');
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+  localStorage.setItem('theme', theme);
+}
+
+applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+
+themeToggle.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+});
+
+/* ──────────────────────────────────
    Active nav link on scroll
    ────────────────────────────────── */
 
