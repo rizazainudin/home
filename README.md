@@ -1,4 +1,4 @@
-# Riza Zainudin — Professional Portfolio.
+# Professional Portfolio
 
 Personal portfolio website for **Riza Zainudin**. Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build step, no dependencies beyond Google Fonts and Font Awesome.
 
